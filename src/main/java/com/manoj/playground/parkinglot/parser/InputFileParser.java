@@ -1,5 +1,7 @@
 package com.manoj.playground.parkinglot.parser;
 
+import com.manoj.playground.parkinglot.command.CommandParser;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -12,10 +14,9 @@ public class InputFileParser {
          BufferedReader reader = new BufferedReader(new InputStreamReader(fin));
          String line;
          while ((line = reader.readLine()) != null) {
-            System.out.println(line);
+            CommandParser.parseCommand(line.trim());
          }
       } catch (Exception e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       }
    }

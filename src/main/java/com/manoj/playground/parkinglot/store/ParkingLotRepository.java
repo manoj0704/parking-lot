@@ -32,8 +32,10 @@ public final class ParkingLotRepository {
          .forEach(value -> parkingSlots.add(new ParkingSlot(valueOf(value))));
    }
 
-   public void parkCar(Car car) {
-      getNearestParkingSlot().setCar(car);
+   public ParkingSlot parkCar(Car car) {
+      ParkingSlot parkingSlot = getNearestParkingSlot();
+      parkingSlot.setCar(car);
+      return parkingSlot;
    }
 
    public void unparkCar(String inputSlot) {
