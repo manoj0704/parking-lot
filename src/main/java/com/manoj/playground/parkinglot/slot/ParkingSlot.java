@@ -2,6 +2,7 @@ package com.manoj.playground.parkinglot.slot;
 
 import com.manoj.playground.parkinglot.car.Car;
 
+import static java.lang.String.join;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 public class ParkingSlot implements Comparable<ParkingSlot> {
@@ -55,5 +56,9 @@ public class ParkingSlot implements Comparable<ParkingSlot> {
    @Override
    public int compareTo(ParkingSlot o) {
       return this.slotId.compareTo(o.getSlotId());
+   }
+
+   public String printParkingSlotInformation() {
+      return join("\t", this.slotId, this.car.getRegNo(), this.car.getColor());
    }
 }
