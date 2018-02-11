@@ -27,4 +27,11 @@ class CarTest {
          .isInstanceOf(IllegalArgumentException.class)
          .withFailMessage("Invalid input. Registration number and color mandatory for a car!");
    }
+
+   @Test
+   void carsMustBeEqualIfTheirRegNumberAndColorAreEqual() {
+      Car car1 = new Car("reg1", "White");
+      Car car2 = new Car("reg1", "White");
+      assertThat(car1).isEqualTo(car2);
+   }
 }

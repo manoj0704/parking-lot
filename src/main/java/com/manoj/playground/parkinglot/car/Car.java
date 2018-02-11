@@ -23,4 +23,25 @@ public class Car {
    public String getColor() {
       return color;
    }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) {
+         return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+         return false;
+      }
+
+      Car car = (Car) o;
+
+      return regNo.equals(car.regNo) && color.equals(car.color);
+   }
+
+   @Override
+   public int hashCode() {
+      int result = regNo.hashCode();
+      result = 31 * result + color.hashCode();
+      return result;
+   }
 }
