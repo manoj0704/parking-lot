@@ -37,4 +37,26 @@ class ParkingSlotTest {
       ParkingSlot parkingSlot = new ParkingSlot("2");
       assertThat(parkingSlot.isEmpty()).isEqualTo(TRUE);
    }
+
+   @Test
+   void parkingSlotsAreEqualIfTheirSlotIdsAreEqual() {
+      ParkingSlot parkingSlot1 = new ParkingSlot("1");
+      parkingSlot1.setCar(new Car("abc", "white"));
+
+      ParkingSlot parkingSlot2 = new ParkingSlot("1");
+      parkingSlot2.setCar(new Car("xzy", "white"));
+
+      assertThat(parkingSlot1).isEqualTo(parkingSlot2);
+   }
+
+   @Test
+   void parkingSlotsAreSortedBasedOnSlotId() {
+      ParkingSlot parkingSlot1 = new ParkingSlot("1");
+      parkingSlot1.setCar(new Car("regNo", "white"));
+      ParkingSlot parkingSlot2 = new ParkingSlot("2");
+      ParkingSlot parkingSlot3 = new ParkingSlot("3");
+
+      assertThat(parkingSlot1).usingDefaultComparator().isLessThan(parkingSlot2);
+      assertThat(parkingSlot3).usingDefaultComparator().isGreaterThan(parkingSlot1);
+   }
 }

@@ -4,7 +4,7 @@ import com.manoj.playground.parkinglot.car.Car;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
-public class ParkingSlot {
+public class ParkingSlot implements Comparable<ParkingSlot> {
 
    private final String slotId;
 
@@ -31,5 +31,29 @@ public class ParkingSlot {
 
    public void setCar(Car car) {
       this.car = car;
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) {
+         return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+         return false;
+      }
+
+      ParkingSlot that = (ParkingSlot) o;
+
+      return slotId.equals(that.slotId);
+   }
+
+   @Override
+   public int hashCode() {
+      return slotId.hashCode();
+   }
+
+   @Override
+   public int compareTo(ParkingSlot o) {
+      return this.slotId.compareTo(o.getSlotId());
    }
 }
